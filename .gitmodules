@@ -1,0 +1,12 @@
+[submodule "site-lisp/one-key"]
+	path = site-lisp/one-key
+	url = https://github.com/manateelazycat/one-key.git
+[submodule "site-lisp/lsp-bridge"]
+	path = site-lisp/lsp-bridge
+	url = https://github.com/manateelazycat/lsp-bridge.git
+[submodule "site-lisp/auto-save"]
+	path = site-lisp/auto-save
+	url = https://github.com/manateelazycat/auto-save.git
+[submodule "site-lisp/beancount"]
+	path = site-lisp/beancount
+	url = https://github.com/beancount/beancount-mode.git
