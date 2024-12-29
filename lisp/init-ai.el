@@ -25,13 +25,18 @@
 					:endpoint "/chat/completions"
 					:stream t
 					:key (read-llm-api-key (deepseek-api-key-path))
-					:models '("deepseek-chat" "deepseek-coder"))))
+					:models '("deepseek-chat" "deepseek-coder")))
+  ; Let window scroll automatically as the response is inserted
+  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
+  ; Let cursor move to the next prompt after the response is inserted
+  (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aider.el
 (add-to-list 'load-path "~/.emacs.d/site-lisp/aider/")
 (require 'aider)
-(setq aider-args '("--model" "deepseek/deepseek-coder"))
+(setq aider-args '("--no-auto-commits" "--model" "deepseek/deepseek-coder"))
 (setenv "DEEPSEEK_API_KEY" (read-llm-api-key (deepseek-api-key-path)))
 
 (provide 'init-ai)

@@ -31,8 +31,8 @@
                                (cdlatex-mode)
                                (reftex-mode)
                                (prettify-symbols-mode t)
-                               (outline-minor-mode)
-                               (outline-hide-body)
+                               ;; (outline-minor-mode)
+                               ;; (outline-hide-body)
                                (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex --synctex=1%(mode)%' %t" TeX-run-TeX nil t))
                                )))
 

@@ -4,57 +4,64 @@
 
 ;;; Code:
 
-(defun load-font-setup ()
-  (let* ((emacs-font-size 25)
-         (chinese-font-name "TsangerJinKai03-6763")
-         (english-font-name "Sarasa Term SC Nerd")
-         (font-spec-english (font-spec :family english-font-name :size emacs-font-size))
-         (font-spec-chinese (font-spec :family chinese-font-name :size emacs-font-size)))
-    (set-fontset-font (frame-parameter nil 'font) 'unicode-bmp font-spec-english)
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset font-spec-chinese))
-    (set-frame-font font-spec-english)))
+(defun font-installed-p (font-name)
+  "Check if font with FONT-NAME is available."
+  (find-font (font-spec :name font-name)))
 
-(add-hook 'after-init-hook #'load-font-setup)
+(defconst sys/macp
+  (eq system-type 'darwin)
+  "Are we running on a Mac system?")
 
-;; This is hacking to fix Emacs 29 will decrease font after standby.
-(add-function :after after-focus-change-function #'load-font-setup)
+(defconst sys/win32p
+  (eq system-type 'windows-nt)
+  "Are we running on a WinTel system?")
 
+(defun centaur-setup-fonts ()
+  "Setup fonts."
+  (when (display-graphic-p)
+    ;; Set default font
+    (cl-loop for font in '("Sarasa Term SC Nerd" "Cascadia Code" "Fira Code" "Jetbrains Mono"
+                           "SF Mono" "Hack" "Source Code Pro" "Menlo"
+                           "Monaco" "DejaVu Sans Mono" "Consolas"
+			   )
+             when (font-installed-p font)
+             return (set-face-attribute 'default nil
+                                        :family font
+                                        :height (cond (sys/macp 130)
+                                                      (sys/win32p 110)
+                                                      (t 100))))
 
-(dolist (hook (list
-               'c-mode-common-hook
-               'c-mode-hook
-               'c++-mode-hook
-               'java-mode-hook
-               'haskell-mode-hook
-               'emacs-lisp-mode-hook
-               'lisp-interaction-mode-hook
-               'lisp-mode-hook
-               'maxima-mode-hook
-               'ielm-mode-hook
-               'sh-mode-hook
-               'makefile-gmake-mode-hook
-               'php-mode-hook
-               'python-mode-hook
-               'js-mode-hook
-               'go-mode-hook
-               'qml-mode-hook
-               'jade-mode-hook
-               'css-mode-hook
-               'ruby-mode-hook
-               'coffee-mode-hook
-               'rust-mode-hook
-               'qmake-mode-hook
-               'lua-mode-hook
-               'swift-mode-hook
-               'web-mode-hook
-               'markdown-ts-mode-hook
-               'llvm-mode-hook
-               'conf-toml-mode-hook
-               'nim-mode-hook
-               'typescript-mode-hook
-               ))
-  (add-hook hook #'(lambda () (load-font-setup))))
+    ;; Set mode-line font
+    ;; (cl-loop for font in '("Menlo" "SF Pro Display" "Helvetica")
+    ;;          when (font-installed-p font)
+    ;;          return (progn
+    ;;                   (set-face-attribute 'mode-line nil :family font :height 120)
+    ;;                   (when (facep 'mode-line-active)
+    ;;                     (set-face-attribute 'mode-line-active nil :family font :height 120))
+    ;;                   (set-face-attribute 'mode-line-inactive nil :family font :height 120)))
+
+    ;; Specify font for all unicode characters
+    (cl-loop for font in '("Apple Symbols" "Segoe UI Symbol" "Symbola" "Symbol")
+             when (font-installed-p font)
+             return (set-fontset-font t 'symbol (font-spec :family font) nil 'prepend))
+
+    ;; Emoji
+    (cl-loop for font in '("Noto Color Emoji" "Apple Color Emoji" "Segoe UI Emoji")
+             when (font-installed-p font)
+             return (set-fontset-font t
+                                      (if (< emacs-major-version 28)'symbol 'emoji)
+                                      (font-spec :family font) nil 'prepend))
+
+    ;; Specify font for Chinese characters
+    (cl-loop for font in '("TsangerJinKai03-6763 W05" "LXGW Neo Xihei" "WenQuanYi Micro Hei Mono" "LXGW WenKai Screen"
+                           "LXGW WenKai Mono" "PingFang SC" "Microsoft Yahei UI" "Simhei")
+             when (font-installed-p font)
+             return (progn
+                      (setq face-font-rescale-alist `((,font . 1.3)))
+                      (set-fontset-font t 'han (font-spec :family font))))))
+(centaur-setup-fonts)
+(add-hook 'window-setup-hook #'centaur-setup-fonts)
+(add-hook 'server-after-make-frame-hook #'centaur-setup-fonts)
 
 (provide 'init-font)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

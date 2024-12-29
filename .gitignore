@@ -54,3 +54,4 @@ eln-cache/
 .cache/
 history
 .aider*
+.env

@@ -22,10 +22,6 @@
 			   )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Font
-(set-face-attribute 'default nil :font (font-spec :family "Sarasa Term SC Nerd" :size 14))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Tab Bar
 (use-package tab-bar
   :hook

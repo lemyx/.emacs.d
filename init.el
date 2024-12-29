@@ -13,6 +13,7 @@
 ;; Generic
 (require 'init-package)
 (require 'init-onekey)
+(require 'init-font)
 (require 'init-ui)
 (require 'init-treemacs)
 (require 'init-save)
