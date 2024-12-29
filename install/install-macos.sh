@@ -33,5 +33,8 @@ npm install -g pyright
 pip3 install ruff-lsp --break-system-packages
 brew install texlab
 
+# aider
+brew install aider
+
 # fetch submodules
 git submodule update --init

@@ -3,7 +3,7 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/beancount/")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/beancount-mode/")
 (require 'beancount)
 (add-to-list 'auto-mode-alist '("\\.bean\\'" . beancount-mode))
 (add-hook 'beancount-mode-hook

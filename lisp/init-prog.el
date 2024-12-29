@@ -4,6 +4,10 @@
 ;;; Code:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-revert
+(global-auto-revert-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Fluently Edit Large Files
 ;; https://emacs-china.org/t/topic/25811/6
 (setq-default bidi-display-reordering nil)

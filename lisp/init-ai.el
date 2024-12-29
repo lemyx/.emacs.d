@@ -5,7 +5,7 @@
 
 (defun deepseek-api-key-path ()
   "Return the path to the DeepSeek API key file."
-  (expand-file-name "~/.config/llm/deepseek/api_key.txt"))
+  (expand-file-name "~/.dotfiles/llm/deepseek/api_key.txt"))
 
 (defun read-llm-api-key (path)
   "Read and return the API key from the specified file path."
@@ -18,14 +18,14 @@
 (use-package gptel
   :ensure t
   :config
-  (setq gptel-model "deepseek-chat")
+  (setq gptel-model 'deepseek-chat)
   (setq gptel-default-mode 'org-mode)
-  (gptel-set-openai "DeepSeek"
-   :host "api.deepseek.com"
-   :endpoint "/chat/completions"
-   :stream t
-   :key (read-llm-api-key (deepseek-api-key-path))
-   :models '("deepseek-chat" "deepseek-coder")))
+  (setq gptel-backend (gptel-make-openai "DeepSeek"
+					:host "api.deepseek.com"
+					:endpoint "/chat/completions"
+					:stream t
+					:key (read-llm-api-key (deepseek-api-key-path))
+					:models '("deepseek-chat" "deepseek-coder"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aider.el

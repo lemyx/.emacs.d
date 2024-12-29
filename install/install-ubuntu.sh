@@ -36,5 +36,10 @@ cargo build --release
 # vterm
 sudo apt install cmake libtool-bin libvterm-dev
 
+# aider
+export PATH="$PATH:$HOME/.local/bin"
+python -m pip install aider-install --break-system-packages
+aider-install
+
 # fetch submodules
 git submodule update --init

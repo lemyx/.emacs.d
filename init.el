@@ -17,6 +17,7 @@
 (require 'init-treemacs)
 (require 'init-save)
 (require 'init-window)
+(require 'init-ai)
 
 ;; Edit
 (require 'init-completion)

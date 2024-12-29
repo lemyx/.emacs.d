@@ -17,6 +17,8 @@
           ("\\*corfu.*\\*"       :regexp t :ignore t)
           ("*eshell*"                    :select t                          :size 0.4  :align t     :popup t)
           ("*vterm*"                     :select t                          :size 0.4  :align t     :popup t)
+	  ("*DeepSeek*"                  :select t                          :size 0.4  :align t     :popup t)
+	  (comint-mode                   :select t                          :size 0.4  :align t     :popup t)
           (helpful-mode                  :select t                          :size 0.6  :align right :popup t)
           ("*Messages*"                  :select t                          :size 0.4  :align t     :popup t)
           ("*Calendar*"                  :select t                          :size 0.3  :align t     :popup t)
@@ -34,15 +36,18 @@
          )
   :init
   (setq popper-reference-buffers
-        '("\\*Messages\\*"
+        '(
+	  "\\*DeepSeek\\*"
+	  comint-mode
+	  "\\*Messages\\*"
           "\\*Async Shell Command\\*"
           help-mode
           helpful-mode
           occur-mode
           pass-view-mode
-          "^\\*eshell.*\\*$" eshell-mode ;; eshell as a popup
-          "^\\*shell.*\\*$"  shell-mode  ;; shell as a popup
-	  "^\\*vterm*\\*$"   vterm-mode  ;; vterm as a popup
+          "^\\*eshell.*\\*$" eshell-mode
+          "^\\*shell.*\\*$"  shell-mode
+	  "^\\*vterm*\\*$"   vterm-mode
           ("\\*corfu\\*" . hide)
           (compilation-mode . hide)
           ;; derived from `fundamental-mode' and fewer than 10 lines will be considered a popup
