@@ -49,7 +49,6 @@ flycheck_*.el
 
 custom.el
 transient/
-site-lisp/
 projects
 eln-cache/
 .cache/

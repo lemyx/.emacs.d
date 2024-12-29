@@ -31,6 +31,10 @@
   (setq vertico-cycle t)
   )
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/vertico-posframe/")
+(require 'vertico-posframe)
+(vertico-posframe-mode 1)
+
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))

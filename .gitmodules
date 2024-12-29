@@ -10,3 +10,6 @@
 [submodule "site-lisp/beancount"]
 	path = site-lisp/beancount
 	url = https://github.com/beancount/beancount-mode.git
+[submodule "site-lisp/vertico-posframe"]
+	path = site-lisp/vertico-posframe
+	url = https://github.com/tumashu/vertico-posframe.git
