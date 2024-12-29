@@ -17,8 +17,11 @@
 
 ;; show human readable file size
 ;; https://github.com/d12frosted/homebrew-emacs-plus/issues/383#issuecomment-899157143
-(setq insert-directory-program (if (eq system-type 'darwin) "gls" "ls")
-      dired-use-ls-dired t)
+(when (eq system-type 'darwin)
+  (setq insert-directory-program "gls"))
+(when (eq system-type 'gnu/linux)
+  (setq insert-directory-program "ls"))
+(setq dired-use-ls-dired t)
 (setq dired-listing-switches "-al --group-directories-first")
 
 (use-package nerd-icons-dired
