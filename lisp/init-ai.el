@@ -13,6 +13,8 @@
     (insert-file-contents path)
     (string-trim (buffer-string))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; gptel
 (use-package gptel
   :ensure t
   :config
@@ -25,6 +27,7 @@
           :key (read-llm-api-key (deepseek-api-key-path))
           :models '("deepseek-chat" "deepseek-coder"))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aider.el
 (add-to-list 'load-path "~/.emacs.d/site-lisp/aider/")
 (require 'aider)
