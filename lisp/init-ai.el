@@ -20,12 +20,12 @@
   :config
   (setq gptel-model "deepseek-chat")
   (setq gptel-default-mode 'org-mode)
-  (setq (gptel-make-openai "DeepSeek"
-          :host "api.deepseek.com"
-          :endpoint "/chat/completions"
-          :stream t
-          :key (read-llm-api-key (deepseek-api-key-path))
-          :models '("deepseek-chat" "deepseek-coder"))))
+  (gptel-set-openai "DeepSeek"
+   :host "api.deepseek.com"
+   :endpoint "/chat/completions"
+   :stream t
+   :key (read-llm-api-key (deepseek-api-key-path))
+   :models '("deepseek-chat" "deepseek-coder")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aider.el
