@@ -10,14 +10,12 @@
          (english-font-name "Sarasa Term SC Nerd")
          (font-spec-english (font-spec :family english-font-name :size emacs-font-size))
          (font-spec-chinese (font-spec :family chinese-font-name :size emacs-font-size)))
-    (when (display-grayscale-p)
-      (set-frame-font font-spec-english)
-      (set-fontset-font (frame-parameter nil 'font) 'unicode font-spec-english)
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font) charset font-spec-chinese)))
-    ))
+    (set-fontset-font (frame-parameter nil 'font) 'unicode-bmp font-spec-english)
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset font-spec-chinese))
+    (set-frame-font font-spec-english)))
 
-(load-font-setup)
+(add-hook 'after-init-hook #'load-font-setup)
 
 ;; This is hacking to fix Emacs 29 will decrease font after standby.
 (add-function :after after-focus-change-function #'load-font-setup)
