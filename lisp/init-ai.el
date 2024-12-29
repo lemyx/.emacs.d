@@ -8,10 +8,14 @@
   (expand-file-name "~/.config/llm/deepseek/api_key.txt"))
 
 (defun read-llm-api-key (path)
-  "Read and return the DeepSeek API key from the configured file."
+  "Read and return the API key from the specified file path."
   (with-temp-buffer
-    (insert-file-contents (path))
+    (insert-file-contents path)
     (string-trim (buffer-string))))
+
+(defun read-deepseek-api-key ()
+  "Read and return the DeepSeek API key."
+  (read-llm-api-key (deepseek-api-key-path)))
 
 (use-package gptel
   :ensure t
@@ -22,14 +26,14 @@
           :host "api.deepseek.com"
           :endpoint "/chat/completions"
           :stream t
-          :key (read-deepseek-api-key(deepseek-api-key-path))
+          :key (read-deepseek-api-key)
           :models '("deepseek-chat" "deepseek-coder"))))
 
 ;; aider.el
 (add-to-list 'load-path "~/.emacs.d/site-lisp/aider/")
 (require 'aider)
 (setq aider-args '("--model" "deepseek/deepseek-coder"))
-(setenv "DEEPSEEK_API_KEY" (read-deepseek-api-key()deepseek-api-key-path))
+(setenv "DEEPSEEK_API_KEY" (read-deepseek-api-key))
 
 (provide 'init-ai)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
