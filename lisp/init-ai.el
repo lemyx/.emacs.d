@@ -22,8 +22,8 @@
 (require 'aider)
 (setq aider-args '("--model" "deepseek/deepseek-coder"))
 (setenv "DEEPSEEK_API_KEY" (with-temp-buffer
-                               (insert-file-contents "~/.config/llm/deepseek/api_key.txt")
-                               (string-trim (buffer-string))))
+                            (insert-file-contents "~/.config/llm/deepseek/api_key.txt")
+                            (string-trim (buffer-string))))
 
 (provide 'init-ai)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
