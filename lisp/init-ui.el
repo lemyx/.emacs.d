@@ -6,6 +6,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Theme
+(use-package doom-themes)
+
 (use-package circadian
   :hook
   (emacs-startup . circadian-setup)
@@ -13,11 +15,16 @@
   (setq calendar-latitude 40.0)
   (setq calendar-longitude 116.4)
   (setq circadian-themes '((:sunrise . (
-					;; modus-operandi
+					modus-operandi
 					adwaita
+					doom-one-light
+					doom-solarized-light
 					))
                            (:sunset  . (
 					modus-vivendi
+					doom-one
+					doom-opera
+					doom-nord-aurora
 					))
 			   )))
 
