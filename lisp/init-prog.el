@@ -20,15 +20,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Line Numbers
 (use-package display-line-numbers
-      :ensure nil
-      :init
-      (setq display-line-numbers-width-start t)
-      (setq-default display-line-numbers t)
-      :config
-      (dolist (mode '(org-mode-hook
-                      term-mode-hook
-                      eshell-mode-hook))
-        (add-hook mode (lambda () (display-line-numbers-mode 0)))))
+  :ensure nil
+  :hook ((prog-mode
+          conf-mode toml-ts-mode
+          yaml-mode yaml-ts-mode)
+         . display-line-numbers-mode)
+  :init (setq display-line-numbers-width-start t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; indent-bars
