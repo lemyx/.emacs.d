@@ -25,6 +25,9 @@
 (require 'init-meow)
 (require 'init-dired)
 
+;; Gtd
+(require 'init-calendar)
+
 ;; Coding
 (require 'init-prog)
 (require 'init-magit)
