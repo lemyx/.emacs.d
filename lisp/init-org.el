@@ -2,6 +2,8 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org
 (use-package org
   :config
   ; Line Truncation @ https://www.gnu.org/software/emacs/manual/html_node/emacs/Line-Truncation.html
@@ -29,6 +31,8 @@
           ("FIXED"      . (:foreground "green"   :weight bold))))
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-modern
 (use-package org-modern
   :hook (after-init . (lambda ()
                         (setq org-modern-hide-stars 'leading)
@@ -36,6 +40,8 @@
   :config
   (setq org-modern-table nil))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-appear
 (use-package org-appear
   :hook
   (org-mode . org-appear-mode)
@@ -47,11 +53,15 @@
   (setq org-appear-inside-latex t)
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-bars
 (use-package org-bars
   :vc (org-bars :url "https://github.com/tonyaldon/org-bars.git"
 		:rev :newest)
   :hook (org-mode . org-bars-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ox-gfm
 ;; org-mode 导出为 markdown @ https://emacs-china.org/t/org-mode-markdown/17393/3
 ;; 如果将 #+begin_src #+end_src 紧跟标题, 则导出效果正常 (workaround)
 (use-package ox-gfm
@@ -73,6 +83,19 @@
   (add-hook 'org-mode-hook
             (lambda ()
               (add-hook 'after-save-hook 'export-org-to-markdown-if-org-mode nil 'make-it-local))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-download
+(use-package org-download
+  :ensure t
+  :config
+  (setq-default org-download-heading-lvl nil)
+  (setq-default org-download-image-dir "./img")
+  ;;if there is a #+ATTR.*: width="200", resize to 200, otherwise resize to 320
+  (setq org-image-actual-width '(320))
+  (setq org-startup-with-inline-images t)
+  :hook
+  (org-mode . org-download-enable))
 
 (provide 'init-org)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
