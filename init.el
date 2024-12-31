@@ -44,6 +44,9 @@
 (require 'init-tex)
 (require 'init-pdf)
 
+(require 'init-session)
+(emacs-session-restore)
+
 (provide 'init)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here

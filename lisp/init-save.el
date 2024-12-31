@@ -3,6 +3,8 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; auto-save
 (add-to-list 'load-path "~/.emacs.d/site-lisp/auto-save/")
 (require 'auto-save)
 (auto-save-enable)
