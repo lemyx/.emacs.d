@@ -4,8 +4,11 @@
 ;;; Code:
 
 ;; Ensure auctex is installed
+(unless (package-installed-p 'auctex)
+  (package-refresh-contents)
+  (package-install 'auctex))
+
 (require 'tex)
-(require 'auctex)
 
 (use-package cdlatex
   :ensure t
