@@ -36,5 +36,9 @@ brew install texlab
 # aider
 brew install aider
 
+# rime
+brew install --cask squirrel
+brew install librime
+
 # fetch submodules
 git submodule update --init

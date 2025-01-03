@@ -19,6 +19,7 @@
 (require 'init-save)
 (require 'init-window)
 (require 'init-ai)
+(require 'init-rime)
 
 ;; Edit
 (require 'init-completion)
