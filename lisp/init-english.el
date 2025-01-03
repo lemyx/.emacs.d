@@ -17,7 +17,6 @@
   (setq immersive-translate-chatgpt-host "api.deepseek.com")
   (setq immersive-translate-chatgpt-model "deepseek-chat")
   (setq immersive-translate-failed-message "🧐")
-  (add-hook 'Info-mode-hook 'immersive-translate-auto-mode)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
