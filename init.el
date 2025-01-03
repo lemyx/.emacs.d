@@ -28,6 +28,9 @@
 ;; Gtd
 (require 'init-calendar)
 
+;; Reading
+(require 'init-english)
+
 ;; Coding
 (require 'init-prog)
 (require 'init-magit)

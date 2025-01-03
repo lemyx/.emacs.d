@@ -21,10 +21,10 @@
 					doom-solarized-light
 					))
                            (:sunset  . (
-					modus-vivendi
+					;; modus-vivendi
 					doom-one
-					doom-opera
-					doom-nord-aurora
+					;; doom-opera
+					;; doom-nord-aurora
 					))
 			   )))
 
