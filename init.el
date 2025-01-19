@@ -26,9 +26,6 @@
 (require 'init-meow)
 (require 'init-dired)
 
-;; Gtd
-(require 'init-calendar)
-
 ;; Reading
 (require 'init-english)
 
@@ -47,6 +44,10 @@
 (require 'init-diary)
 (require 'init-tex)
 (require 'init-pdf)
+
+;; Gtd
+(require 'init-calendar)
+(require 'init-pomodoro)
 
 (require 'init-session)
 (emacs-session-restore)

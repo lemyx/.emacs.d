@@ -14,7 +14,7 @@ fi
 # emacs
 brew tap d12frosted/emacs-plus
 brew uninstall emacs-plus
-brew install emacs-plus --with-xwidgets --with-imagemagick
+brew install emacs-plus --with-xwidgets --with-imagemagick --with-dbus --with-ctags
 brew services restart d12frosted/emacs-plus/emacs-plus@29
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at POSIX file "/Applications" with properties {name:"Emacs.app"}'
 
@@ -29,9 +29,9 @@ brew install node
 npm install -g yaml-language-server
 npm install -g bash-language-server
 npm install -g vscode-langservers-extracted
-npm install -g pyright
 pip3 install ruff-lsp --break-system-packages
 brew install texlab
+brew install basedpyright
 
 # aider
 brew install aider
@@ -39,6 +39,9 @@ brew install aider
 # rime
 brew install --cask squirrel
 brew install librime
+
+# pomodoro
+brew install terminal-notifier
 
 # fetch submodules
 git submodule update --init
