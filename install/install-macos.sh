@@ -39,6 +39,24 @@ brew install aider
 # rime
 brew install --cask squirrel
 brew install librime
+git clone https://github.com/iDvel/rime-ice.git && cd rime-ice
+sed -i '' 's/page_size: 5/page_size: 9/' default.yaml
+wget https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
+cat <<EOL > rime_ice.custom.yaml
+patch:
+  grammar:
+    language: wanxiang-lts-zh-hans.gram
+    collocation_max_length: 5
+    collocation_min_length: 2
+  translator/contextual_suggestions: true
+  translator/max_homophones: 7
+  translator/max_homographs: 7
+EOL
+cd ..
+cp -r ./rime-ice/* ~/.config/fcitx/rime/
+cp -r ./rime-ice/* ~/Library/Rime
+rm -rf rime-ice
+brew install --cask switchkey
 
 # pomodoro
 brew install terminal-notifier
