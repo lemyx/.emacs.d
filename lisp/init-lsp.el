@@ -3,6 +3,8 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; lsp-bridge
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown")
@@ -22,9 +24,13 @@
 (setq lsp-bridge-enable-completion-in-string t)
 (setq lsp-bridge-enable-completion-in-minibuffer t)
 (setq lsp-bridge-enable-with-tramp t)
-(setq lsp-bridge-python-lsp-server "pyright")
+(setq lsp-bridge-python-lsp-server "basedpyright")
 (setq lsp-bridge-tex-lsp-server "texlab")
-(setq lsp-bridge-python-command "/usr/bin/python3")
+(setq lsp-bridge-python-command
+      (cond
+       ((eq system-type 'gnu/linux) "/usr/bin/python3")
+       ((eq system-type 'darwin) "/opt/homebrew/bin/python3")
+       ))
 
 (one-key-create-menu
  "LSP"
@@ -34,6 +40,41 @@
    (("h" . "lsp-bridge-popup-documentation") . lsp-bridge-popup-documentation)
    (("s" . "lsp-bridge-toggle-sdcv-helper") . lsp-bridge-toggle-sdcv-helper))
  t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; virtual environment
+(use-package pyvenv
+  :ensure t
+  :config
+  (setenv "WORKON_HOME" (expand-file-name
+			 (cond ((eq system-type 'gnu/linux) "~/miniconda3/envs")
+			       ((eq system-type 'darwin) "/opt/homebrew/Caskroom/miniconda/base/envs"))))
+  (pyvenv-mode t)
+  (add-hook 'python-mode-hook
+            (lambda () (pyvenv-workon "dev")))
+)
+
+(defun local/lsp-bridge-get-single-lang-server-by-project (project-path filepath)
+  (let* ((json-object-type 'plist)
+         (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
+         (custom-config (expand-file-name "pyright.json" custom-dir))
+         (default-config (json-read-file (expand-file-name "lsp-bridge/langserver/pyright.json" user-emacs-directory)))
+         (settings (plist-get default-config :settings))
+         )
+    (plist-put settings :pythonPath (executable-find "python"))
+    (make-directory (file-name-directory custom-config) t)
+    (with-temp-file custom-config (insert (json-encode default-config)))
+    custom-config))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq-local lsp-bridge-get-single-lang-server-by-project
+                        'local/lsp-bridge-get-single-lang-server-by-project)))
+
+(add-hook 'pyvenv-post-activate-hooks
+          (lambda ()
+            (lsp-bridge-restart-process)))
+
 
 (provide 'init-lsp)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
