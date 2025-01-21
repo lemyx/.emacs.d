@@ -19,7 +19,7 @@ brew services restart d12frosted/emacs-plus/emacs-plus@29
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at POSIX file "/Applications" with properties {name:"Emacs.app"}'
 
 # fonts
-brew tap laishulu/cask-fonts
+brew tap laishulu/homebrew
 brew install --cask font-sarasa-nerd
 brew install --cask font-symbols-only-nerd-font
 
@@ -58,7 +58,7 @@ cp -r ./rime-ice/* ~/Library/Rime
 rm -rf rime-ice
 brew install --cask switchkey
 
-# pomodoro
+# org-pomodoro
 brew install terminal-notifier
 
 # fetch submodules
