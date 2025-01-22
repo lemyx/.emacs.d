@@ -5,28 +5,19 @@
 ;;; Code:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Theme
-(use-package doom-themes)
+;;; lazycat-themes & awesome-tray
+(add-to-list 'load-path "~/.emacs.d/site-lisp/lazycat-theme")
+(require 'lazycat-theme)
+(lazycat-theme-load-dark)
 
-(use-package circadian
-  :hook
-  (emacs-startup . circadian-setup)
-  :config
-  (setq calendar-latitude 40.0)
-  (setq calendar-longitude 116.4)
-  (setq circadian-themes '((:sunrise . (
-					modus-operandi
-					adwaita
-					doom-one-light
-					doom-solarized-light
-					))
-                           (:sunset  . (
-					;; modus-vivendi
-					doom-one
-					;; doom-opera
-					;; doom-nord-aurora
-					))
-			   )))
+(add-to-list 'load-path "~/.emacs.d/site-lisp/awesome-tray")
+(require 'awesome-tray)
+(awesome-tray-mode 1)
+(setq awesome-tray-meow-show-mode t)
+(setq awesome-tray-git-show-status t)
+
+; https://emacs-china.org/t/emacs/6853/14
+(setq-default mode-line-format (remove 'mode-line-buffer-identification mode-line-format))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Tab Bar
@@ -76,12 +67,6 @@
   ;; but you can use any other Nerd Font if you want
   (nerd-icons-font-family "Symbols Nerd Font Mono")
   )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Modeline
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode))
 
 (provide 'init-ui)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
