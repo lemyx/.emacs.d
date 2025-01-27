@@ -32,6 +32,8 @@
 	  rime-predicate-current-uppercase-letter-p
 	  ; 在 LaTeX 数学环境中或者输入 LaTeX 命令时
 	  rime-predicate-tex-math-or-command-p
+	  ; 在 org-mode 代码块中时
+	  rime-predicate-org-in-src-block-p
 	  )
 	)
   ; 强制中文模式, 无视 rime-disable-predicates 中的规则

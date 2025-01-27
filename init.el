@@ -22,6 +22,7 @@
 (require 'init-rime)
 
 ;; Edit
+(require 'init-edit)
 (require 'init-completion)
 (require 'init-meow)
 (require 'init-dired)

@@ -68,6 +68,12 @@
   (nerd-icons-font-family "Symbols Nerd Font Mono")
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; global-hl-line-mode
+(use-package hl-line
+  :ensure nil
+  :hook (after-init . global-hl-line-mode))
+
 (provide 'init-ui)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-ui.el ends here

@@ -12,6 +12,9 @@
   (setq org-startup-numerated t)
   ; Hide emphasis markup characters in buffers @ https://orgmode.org/manual/Emphasis-and-Monospace.html
   (setq org-hide-emphasis-markers t)
+  ; if there is a #+ATTR.*: width="200", resize to 200, otherwise resize to 320
+  (setq org-image-actual-width '(320))
+  (setq org-startup-with-inline-images t)
   ; https://orgmode.org/manual/Fast-access-to-TODO-states.html
   ; https://orgmode.org/guide/Progress-Logging.html
   (setq org-todo-keywords
@@ -91,9 +94,6 @@
   :config
   (setq-default org-download-heading-lvl nil)
   (setq-default org-download-image-dir "./img")
-  ;;if there is a #+ATTR.*: width="200", resize to 200, otherwise resize to 320
-  (setq org-image-actual-width '(320))
-  (setq org-startup-with-inline-images t)
   :hook
   (org-mode . org-download-enable))
 

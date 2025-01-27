@@ -3,6 +3,15 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; winner-mode
+(use-package winner-mode
+  :ensure nil
+  :hook
+  (after-init . winner-mode)
+  (ediff-quit . winner-undo)
+  )
+
 (use-package shackle
   :ensure t
   :hook (after-init . shackle-mode)

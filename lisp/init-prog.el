@@ -5,7 +5,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-revert
-(global-auto-revert-mode 1)
+(use-package autorevert
+  :ensure nil
+  :hook
+  (after-init . global-auto-revert-mode)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Fluently Edit Large Files

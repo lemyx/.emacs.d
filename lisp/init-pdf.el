@@ -5,19 +5,20 @@
 
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode) ; pdf 文件默认打开方式
-  :bind
-  (:map pdf-view-mode-map
-   ("d" . pdf-view-next-page-command)
-   ("a" . pdf-view-previous-page-command)
-   ("s" . pdf-view-scroll-up-or-next-page)
-   ("w" . pdf-view-scroll-down-or-previous-page)
-   :map pdf-history-minor-mode-map
-   ("b" . pdf-history-backward)
-   :map pdf-annot-minor-mode-map
-   ("C-a a" . pdf-annot-add-highlight-markup-annotation)
-   ("C-a s" . pdf-annot-add-squiggly-markup-annotation)
-   ("C-a u" . pdf-annot-add-underline-markup-annotation)
-   ("C-a d" . pdf-annot-delete))
+  ;; :bind
+  ;; (:map pdf-view-mode-map
+  ;;  ("d" . pdf-view-next-page-command)
+  ;;  ("a" . pdf-view-previous-page-command)
+  ;;  ("s" . pdf-view-scroll-up-or-next-page)
+  ;;  ("w" . pdf-view-scroll-down-or-previous-page)
+  ;;  :map pdf-history-minor-mode-map
+  ;;  ("b" . pdf-history-backward)
+  ;;  :map pdf-annot-minor-mode-map
+  ;;  ("C-a a" . pdf-annot-add-highlight-markup-annotation)
+  ;;  ("C-a s" . pdf-annot-add-squiggly-markup-annotation)
+  ;;  ("C-a u" . pdf-annot-add-underline-markup-annotation)
+  ;;  ("C-a d" . pdf-annot-delete)
+  ;;  )
   :custom
   (pdf-view-midnight-colors '("#000000" . "#9bCD9b"))            ; 夜间模式设置绿色底色
   :config
