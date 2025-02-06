@@ -8,8 +8,8 @@
   :config
   ; Line Truncation @ https://www.gnu.org/software/emacs/manual/html_node/emacs/Line-Truncation.html
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
-  ; Dynamic Headline Numbering @ https://orgmode.org/manual/Dynamic-Headline-Numbering.html
-  (setq org-startup-numerated t)
+  ;; ; Dynamic Headline Numbering @ https://orgmode.org/manual/Dynamic-Headline-Numbering.html
+  ;; (setq org-startup-numerated t)
   ; Hide emphasis markup characters in buffers @ https://orgmode.org/manual/Emphasis-and-Monospace.html
   (setq org-hide-emphasis-markers t)
   ; if there is a #+ATTR.*: width="200", resize to 200, otherwise resize to 320

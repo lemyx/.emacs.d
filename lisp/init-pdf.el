@@ -28,7 +28,7 @@
   (require 'pdf-annot)                                           ; 设置 pdf-annot-mimor-mode-map
   (require 'pdf-history)                                         ; 设置 pdf-history-minor-mode-map
   (add-hook 'pdf-view-mode-hook 'pdf-view-fit-width-to-window)   ; 默认适应页宽
-  ; (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode) ; 默认夜间模式
+  (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode)   ; 默认夜间模式
   (add-hook 'TeX-after-compilation-finished-functions
 	    #'TeX-revert-document-buffer) ; 完成编译后刷新 pdf 文件
   )
