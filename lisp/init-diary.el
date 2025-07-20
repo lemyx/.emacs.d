@@ -14,7 +14,7 @@
   (setq org-journal-dir "~/org/journal/"
         org-journal-date-format "%A, %d %B %Y"
 	org-journal-file-format "%Y-%m-W%W.org"
-        org-journal-file-type 'weekly))
+        org-journal-file-type 'yearly))
 
 (provide 'init-diary)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

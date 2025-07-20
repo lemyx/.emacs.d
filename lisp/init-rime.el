@@ -12,7 +12,8 @@
   (setq rime-show-candidate 'posframe)
   (when (eq system-type 'darwin)
     (setq rime-emacs-module-header-root "/opt/homebrew/include")
-    (setq rime-librime-root "/opt/homebrew/opt/librime"))
+    ; https://github.com/DogLooksGood/emacs-rime/blob/master/INSTALLATION_EN.org#macos
+    (setq rime-librime-root "/opt/homebrew"))
   ; 临时英文模式
   (setq rime-disable-predicates
 	'(meow-motion-mode-p

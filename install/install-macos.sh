@@ -6,9 +6,10 @@ brew install texlive
 # emacs
 brew tap d12frosted/emacs-plus
 brew uninstall emacs-plus
-brew install emacs-plus --with-xwidgets --with-imagemagick --with-dbus --with-ctags
-brew services restart d12frosted/emacs-plus/emacs-plus@29
-osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at POSIX file "/Applications" with properties {name:"Emacs.app"}'
+brew install emacs-plus --with-xwidgets --with-imagemagick
+brew services restart d12frosted/emacs-plus/emacs-plus@30
+sudo codesign --force --deep --sign - /usr/local/opt/emacs-plus@30/Emacs.app
+osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@30/Emacs.app" at POSIX file "/Applications" with properties {name:"Emacs.app"}'
 
 # fonts
 brew tap laishulu/homebrew
@@ -16,18 +17,14 @@ brew install --cask font-sarasa-nerd
 brew install --cask font-symbols-only-nerd-font
 
 # lsp-bridge
-pip3 install epc orjson sexpdata six setuptools paramiko rapidfuzz pynput pyobjc --break-system-packages
+pip3 install epc orjson sexpdata six setuptools paramiko rapidfuzz watchdog packaging --break-system-packages
+pip3 install "python-lsp-server[all]" python-lsp-server python-lsp-ruff --break-system-packages ## pylsp
 brew install node
 npm install -g yaml-language-server
 npm install -g bash-language-server
 npm install -g vscode-langservers-extracted
 brew install texlab
-brew install basedpyright
-brew install ruff
 brew install beancount-language-server
-
-# aider
-brew install aider
 
 # rime
 brew install --cask squirrel

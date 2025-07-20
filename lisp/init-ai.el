@@ -32,13 +32,6 @@
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
   )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; aider.el
-(add-to-list 'load-path "~/.emacs.d/site-lisp/aider/")
-(require 'aider)
-(setq aider-args '("--no-auto-commits" "--model" "deepseek/deepseek-coder"))
-(setenv "DEEPSEEK_API_KEY" (read-llm-api-key (deepseek-api-key-path)))
-
 (provide 'init-ai)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-ai.el ends here

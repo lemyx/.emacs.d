@@ -24,13 +24,10 @@
 (setq lsp-bridge-enable-completion-in-string t)
 (setq lsp-bridge-enable-completion-in-minibuffer t)
 (setq lsp-bridge-enable-with-tramp t)
-(setq lsp-bridge-python-lsp-server "basedpyright")
+(setq lsp-bridge-python-lsp-server "pylsp")
+(setq lsp-bridge-python-multi-lsp-server "pylsp_ruff")
 (setq lsp-bridge-tex-lsp-server "texlab")
-(setq lsp-bridge-python-command
-      (cond
-       ((eq system-type 'gnu/linux) "/usr/bin/python3")
-       ((eq system-type 'darwin) "/opt/homebrew/bin/python3")
-       ))
+(setq lsp-bridge-python-command (executable-find "python3"))
 
 (one-key-create-menu
  "LSP"
@@ -48,7 +45,9 @@
   :config
   (setenv "WORKON_HOME" (expand-file-name
 			 (cond ((eq system-type 'gnu/linux) "~/miniconda3/envs")
-			       ((eq system-type 'darwin) "/opt/homebrew/Caskroom/miniconda/base/envs"))))
+			       ;; ((eq system-type 'darwin) "/opt/homebrew/Caskroom/miniconda/base/envs")
+			       ((eq system-type 'darwin) "/usr/local/Caskroom/miniconda/base/envs")
+			       )))
   (pyvenv-mode t)
   (add-hook 'python-mode-hook
             (lambda () (pyvenv-workon "dev")))

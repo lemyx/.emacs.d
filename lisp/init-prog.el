@@ -21,15 +21,15 @@
       large-hscroll-threshold 1000
       syntax-wholeline-max 1000)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Line Numbers
-(use-package display-line-numbers
-  :ensure nil
-  :hook ((prog-mode
-          conf-mode toml-ts-mode
-          yaml-mode yaml-ts-mode)
-         . display-line-numbers-mode)
-  :init (setq display-line-numbers-width-start t))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;; Line Numbers
+;; (use-package display-line-numbers
+;;   :ensure nil
+;;   :hook ((prog-mode
+;;           conf-mode toml-ts-mode
+;;           yaml-mode yaml-ts-mode)
+;;          . display-line-numbers-mode)
+;;   :init (setq display-line-numbers-width-start t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; indent-bars

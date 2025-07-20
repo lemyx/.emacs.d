@@ -15,7 +15,7 @@
 (require 'init-onekey)
 (require 'init-font)
 (require 'init-ui)
-(require 'init-treemacs)
+;(require 'init-treemacs)
 (require 'init-save)
 (require 'init-window)
 (require 'init-ai)
@@ -50,8 +50,8 @@
 (require 'init-calendar)
 (require 'init-pomodoro)
 
-(require 'init-session)
-(emacs-session-restore)
+; (require 'init-session)
+; (emacs-session-restore)
 
 (provide 'init)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
