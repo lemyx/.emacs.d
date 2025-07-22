@@ -25,7 +25,7 @@
           ("\\*Async Shell.*\\*" :regexp t :ignore t)
           ("\\*corfu.*\\*"       :regexp t :ignore t)
           ("*eshell*"                    :select t                          :size 0.4  :align t     :popup t)
-          ("*vterm*"                     :select t                          :size 0.4  :align t     :popup t)
+          ("*eat*"                     :select t                          :size 0.4  :align t     :popup t)
 	  ("*DeepSeek*"                  :select t                          :size 0.4  :align t     :popup t)
 	  (comint-mode                   :select t                          :size 0.4  :align t     :popup t)
           (helpful-mode                  :select t                          :size 0.6  :align right :popup t)
@@ -56,7 +56,7 @@
           pass-view-mode
           "^\\*eshell.*\\*$" eshell-mode
           "^\\*shell.*\\*$"  shell-mode
-	  "^\\*vterm*\\*$"   vterm-mode
+	  "^\\*eat*\\*$"     eat-mode
           ("\\*corfu\\*" . hide)
           (compilation-mode . hide)
           ;; derived from `fundamental-mode' and fewer than 10 lines will be considered a popup

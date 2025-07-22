@@ -35,7 +35,7 @@
 (require 'init-magit)
 (require 'init-lsp)
 (require 'init-env)
-(require 'init-vterm)
+(require 'init-eat)
 
 ;; Writing
 (require 'init-org)
