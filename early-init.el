@@ -25,6 +25,7 @@
 (menu-bar-mode -1)                      ; 关闭菜单栏
 (tool-bar-mode -1)                      ; 关闭工具栏
 (scroll-bar-mode -1)                    ; 关闭滚动条
+(pixel-scroll-precision-mode)           ; 像素级滚动
 (setq inhibit-splash-screen t)
 (setq use-file-dialog nil)
 
