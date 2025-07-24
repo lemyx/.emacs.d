@@ -6,11 +6,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Xah Themes
-
 ;; initial window settings
 (setq initial-frame-alist
       '((background-color . "honeydew")))
-
 ;; subsequent window settings
 (setq default-frame-alist
       '((background-color . "honeydew")))

@@ -28,6 +28,7 @@
    '("?" . meow-cheatsheet)
    ;; one-key group
    '("l" . one-key-menu-lsp)
+   '("q" . one-key-menu-claudecode)
    )
   (meow-normal-define-key
    '("0" . meow-expand-0)

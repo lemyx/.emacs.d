@@ -32,6 +32,35 @@
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; claude-code
+(add-to-list 'display-buffer-alist
+                 '("^\\*claude"
+                   (display-buffer-in-side-window)
+                   (side . right)
+                   (window-width . 90)))
+
+(use-package claude-code
+  :ensure t
+  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+  :config
+  (progn
+    (setenv "ANTHROPIC_BASE_URL" "http://172.18.163.197:8082")
+    (setenv "ANTHROPIC_AUTH_TOKEN" "api-key")
+    (setq claude-code-program "/usr/local/bin/claude")
+    )
+  (setq claude-code-terminal-backend 'eat)
+  (setq claude-code-term-name "xterm-256color")
+  (setq claude-code-program-switches '("--verbose"))
+  (setq claude-code-enable-notifications t)
+  (setq claude-code-notification-function 'claude-code--default-notification)
+  )
+
+(one-key-create-menu
+ "CLAUDECODE"
+ '((("a" . "claude-code-transient") . claude-code-transient))
+ t)
+
 (provide 'init-ai)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-ai.el ends here

@@ -23,6 +23,7 @@ brew install node
 npm install -g yaml-language-server
 npm install -g bash-language-server
 npm install -g vscode-langservers-extracted
+npm install -g @github/copilot-language-server
 brew install texlab
 brew install beancount-language-server
 
