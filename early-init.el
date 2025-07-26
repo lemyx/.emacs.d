@@ -35,6 +35,10 @@
 ;; 启动时窗口全屏
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; 防止夜间启动 Emacs 时白色主题晃眼
+;; https://emacs-china.org/t/prevent-initial-flash-of-light/29578/5
+(add-to-list 'default-frame-alist '(background-color . "black"))
+
 (setq type-compile-warnings nil)
 
 (provide 'early-init)

@@ -5,13 +5,29 @@
 ;;; Code:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Xah Themes
-;; initial window settings
-(setq initial-frame-alist
-      '((background-color . "honeydew")))
-;; subsequent window settings
-(setq default-frame-alist
-      '((background-color . "honeydew")))
+;;; Themes
+
+;; ;; Xah Lee
+;; ;; initial window settings
+;; (setq initial-frame-alist
+;;       '((background-color . "honeydew")))
+;; ;; ;; subsequent window settings
+;; (setq default-frame-alist
+;;       '((background-color . "honeydew")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ns-system-appearance-change-functions
+;; provided by emacs-plus
+;; https://github.com/d12frosted/homebrew-emacs-plus/blob/3e95d573d5f13aba7808193b66312b38a7c66851/patches/emacs-28/system-appearance.patch#L42-L49
+;; alternatively, package auto-dark for cross-platform
+(defun my/load-theme (appearance)
+  "Load theme, taking current system APPEARANCE into consideration."
+  (mapc #'disable-theme custom-enabled-themes)
+  (pcase appearance
+    ('light (load-theme 'modus-operandi t))
+    ('dark (load-theme 'modus-vivendi t))))
+
+(add-hook 'ns-system-appearance-change-functions #'my/load-theme)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Tab Bar
