@@ -38,6 +38,9 @@
 ;; https://emacs-china.org/t/prevent-initial-flash-of-light/29578/5
 (add-to-list 'default-frame-alist '(background-color . "black"))
 
+;; 添加 confirm-kill-emacs 避免误关闭 Emacs 以及 "Emacs 意外退出的提示"
+(setq confirm-kill-emacs (lambda (prompt) (y-or-n-p "是否退出Emacs:")))
+
 (setq type-compile-warnings nil)
 
 (provide 'early-init)
