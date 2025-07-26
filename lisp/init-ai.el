@@ -3,6 +3,8 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; gptel
 (defun deepseek-api-key-path ()
   "Return the path to the DeepSeek API key file."
   (expand-file-name "~/.dotfiles/llm/deepseek/api_key.txt"))
@@ -13,8 +15,6 @@
     (insert-file-contents path)
     (string-trim (buffer-string))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; gptel
 (use-package gptel
   :ensure t
   :config
@@ -33,7 +33,7 @@
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; claude-code
+;;; claude-code
 (add-to-list 'display-buffer-alist
                  '("^\\*claude"
                    (display-buffer-in-side-window)
@@ -45,7 +45,7 @@
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
   :config
   (progn
-    (setenv "ANTHROPIC_BASE_URL" "http://172.18.163.197:8082")
+    (setenv "ANTHROPIC_BASE_URL" "http://localhost:8082")
     (setenv "ANTHROPIC_AUTH_TOKEN" "api-key")
     (setq claude-code-program "/usr/local/bin/claude")
     )
@@ -60,6 +60,25 @@
  "CLAUDECODE"
  '((("a" . "claude-code-transient") . claude-code-transient))
  t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; copilot
+(use-package copilot
+  :vc (:url "https://github.com/copilot-emacs/copilot.el" :rev :newest :branch "main")
+  :hook
+  (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+	      ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-n" . 'copilot-next-completion)
+              ("C-p" . 'copilot-previous-completion))
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
+  )
 
 (provide 'init-ai)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

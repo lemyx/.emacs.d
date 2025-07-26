@@ -19,7 +19,7 @@
 (require 'lsp-bridge)
 (global-lsp-bridge-mode)
 (setq acm-enable-doc t)
-(setq acm-enable-copilot t)
+(setq acm-enable-copilot nil)
 (setq lsp-bridge-enable-hover-diagnostic t)
 (setq lsp-bridge-enable-completion-in-string t)
 (setq lsp-bridge-enable-completion-in-minibuffer t)
